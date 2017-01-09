@@ -1,0 +1,53 @@
+<topbar></topbar>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-8" >
+      <h3 class="titre">Produits</h3>
+      <div class="col-sm-12 col-md-12 col-lg-3 produit" *ngFor="let produit of produits let i=index">
+        <img src="{{produit.image}}" alt="">
+        <h4>{{produit.nom}}</h4>
+        <h5>Prix {{produit.prixHT}}</h5>
+          <div class="row">
+            <h5>quantité</h5>
+            <button className="btn btn-primary">-</button>
+            <button className="btn btn-danger">+</button>
+          </div>
+        <button class="btn btn-primary">Ajouter</button>
+    </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4 " >
+      <h3 class="titre">Panier</h3>
+      <div class="col-sm-12 col-md-12 col-lg-4 panier" >
+        <table >
+				<thead>
+					<tr >
+						<th class="text-center">
+							#
+						</th>
+						<th class="text-center">
+							Nom
+						</th>
+						<th class="text-center">
+							Quantité
+						</th>
+						<th class="text-center">
+							Prix
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id='addr0'>
+						<td>
+						</td>
+						<td>
+						</td>
+						<td>
+						</td>
+					</tr>
+                    <tr id='addr1'></tr>
+				</tbody>
+			</table>
+      </div>
+    </div>
+  </div>
+</div>
