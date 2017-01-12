@@ -2,51 +2,76 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-8" >
-      <h3 class="titre">Produits</h3>
-      <div class="col-sm-12 col-md-12 col-lg-3 produit" *ngFor="let produit of produits let i=index">
+      <h2 class="titre">Produits</h2>
+      <div class="col-sm-12 col-md-12 col-lg-3 produit" *ngFor="let produit of produits let i=index" >
         <img src="{{produit.image}}" alt="">
         <h4>{{produit.nom}}</h4>
-        <h5>Prix {{produit.prixHT}}</h5>
+        <h5>Prix {{produit.prixHT}}€</h5>
           <div class="row">
-            <h5>quantité</h5>
-            <button className="btn btn-primary">-</button>
-            <button className="btn btn-danger">+</button>
+            <h5>quantité {{produit.quantite}}</h5>
+            <button className="btn btn-primary" (click)="deduit(i)">-</button>
+            <button className="btn btn-danger" (click)="ajout(i)">+</button>
           </div>
-        <button class="btn btn-primary">Ajouter</button>
+        <button class="btn btn-primary" (click)="ajoutProduit(i)">Ajouter</button>
     </div>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-4 " >
-      <h3 class="titre">Panier</h3>
-      <div class="col-sm-12 col-md-12 col-lg-4 panier" >
+  <div class="col-sm-12 col-md-12 col-lg-4">
+      <h2 class="titre">Panier</h2>
+      <div class="col-sm-12 col-md-12 col-lg-4 panier">
         <table >
 				<thead>
 					<tr >
-						<th class="text-center">
-							#
-						</th>
-						<th class="text-center">
-							Nom
-						</th>
-						<th class="text-center">
-							Quantité
-						</th>
-						<th class="text-center">
-							Prix
-						</th>
+            <th >N°</th>
+		        <th >Nom</th>
+						<th>Quantité</th>
+						<th>Prix</th>
+            <th ><span class="glyphicon glyphicon-trash"></span></th>
 					</tr>
+
 				</thead>
-				<tbody>
-					<tr id='addr0'>
-						<td>
-						</td>
-						<td>
-						</td>
-						<td>
-						</td>
+				<tbody *ngFor="let commandes of commande let i=index ">
+					<tr >
+            <td>{{i+1}}</td>
+						<td>{{commandes.nom}}</td>
+            <td>{{commandes.quantite}}</td>
+						<td>{{commandes.prixHT*commandes.quantite}}€</td>
+            <td (click)="supprimePanier(i)"><span class="glyphicon glyphicon-remove"></span></td>
 					</tr>
-                    <tr id='addr1'></tr>
+            <tr>
+
+            </tr>
 				</tbody>
+
 			</table>
+      <div class="col-sm-12 col-md-12 col-lg-4 bloc">
+        <div class="col-sm-12 col-md-12 col-lg-4 commande">
+
+      <table>
+        <thead>
+          <tr >
+            <th >Qté</th>
+            <th >PrixHT</th>
+            <th>Prix TTC</th>
+
+            <th ></th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{calculerQte(i)}}</td>
+            <td>{{calculerTotal(i)}}€</td>
+            <td>{{calculerTotal(i)+calculerTotal(i)*0.2}}</td>
+            <td></td>
+            <td (click)="supprimeCommande(i)"><span class="glyphicon glyphicon-trash"></span></td>
+          </tr>
+            <tr>
+
+            </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
       </div>
     </div>
   </div>
