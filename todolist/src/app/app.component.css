@@ -1,0 +1,20 @@
+h1{
+  color:#3B7BAC;
+  font-family: sans-serif;
+}
+input{
+  border-color:#3B7BAC;
+  width:30vh;
+  height: 5vh;
+  font-size: 20px;
+}
+li{
+  color:#3B7BAC;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+.fait{
+  text-decoration: line-through;
+color:red;
+}
