@@ -1,0 +1,39 @@
+<div class="content">
+  <!--titre-->
+  <div class="row">
+    <div class="col s12 m12 l10 ">
+      <div class="card-panel white-text cyan darken-1 center-align ">
+        <h4>{{titre}}</h4>
+      </div>
+    </div>
+  </div>
+  <!--2 panneaux à visiter et visité-->
+  <div class="row">
+    <form action="">
+      <div class="col s12 m12 l9 ">
+        <input type="text" placeholder="ajouter un pays" [(ngModel)]="texte" name="texte">
+      </div>
+      <div class="col s12 m12 l1 ">
+        <button class="btn-floating btn-large waves-effect pink lighten-1 center-align " (click)="ajoutPays(texte)" ><i class="material-icons">add</i></button>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col s12 m12 l5">
+      <div class="card-panel p pink lighten-1">
+        <h6 class="white-text  center-align">JE VEUX Y ALLER</h6>
+      </div>
+          <ul *ngFor="let lieu of paysSouhait let i=index">
+            <li class="card-panel" (click)="visite(i)">{{lieu}}</li>
+          </ul>
+      </div>
+    <div class="col s12 m12 l5">
+      <div class="card-panel pink lighten-1">
+        <h6 class="white-text  center-align">J'AI VISITE</h6>
+      </div>
+      <ul *ngFor="let visited of faitPays let i=index">
+        <li class="card-panel" (click)="initial(i)">{{visited}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
