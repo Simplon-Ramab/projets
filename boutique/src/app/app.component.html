@@ -35,7 +35,7 @@
 						<td>{{commandes.nom}}</td>
             <td>{{commandes.quantite}}</td>
 						<td>{{commandes.prixHT*commandes.quantite}}€</td>
-            <td (click)="supprimePanier(i)"><span class="glyphicon glyphicon-remove"></span></td>
+            <td (click)="supprimePanier(i)"><span class="glyphicon glyphicon-remove x"></span></td>
 					</tr>
             <tr>
 
@@ -59,11 +59,11 @@
         </thead>
         <tbody>
           <tr >
-            <td>{{calculerQte(i)}}</td>
-            <td>{{calculerTotal(i)}}€</td>
-            <td>{{calculerTotal(i)+calculerTotal(i)*0.2}}</td>
+            <td class="prix">{{calculerQte(i)}}</td>
+            <td class="prix">{{calculerTotal(i)}}€</td>
+            <td class="prix">{{calculerTotal(i)+calculerTotal(i)*0.2}}</td>
             <td></td>
-            <td (click)="supprimeCommande(i)"><span class="glyphicon glyphicon-trash"></span></td>
+            <td (click)="supprimeCommande(i)"><span class="glyphicon glyphicon-trash rouge"></span></td>
           </tr>
             <tr>
 
