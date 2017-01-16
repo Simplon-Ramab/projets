@@ -27,13 +27,21 @@ export class AppComponent {
   ajoutProduit(index:number){
     this.commande.push(this.produits[index]);
     console.log(this.commande);
+
+  }
+
+  initial(index:number){
+
+    this.produits[index].quantite=0;
   }
 
   ajout(index:number){
+
     this.produits[index].quantite++;
     if(this.produits[index].quantite<0){
         this.produits[index].quantite=0;
       }
+
     }
 
   deduit(index:number){
@@ -61,7 +69,7 @@ return somme;
   calculerQte(index:number){
 let somme =0;
 for(var i=0; i<this.commande.length;i++){
-  somme+=parseInt(this.commande[i].quantite);
+  somme+=(this.commande[i].quantite);
   console.log(this.commande);
 }
 return somme;
