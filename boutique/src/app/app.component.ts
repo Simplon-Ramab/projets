@@ -17,22 +17,42 @@ export class AppComponent {
   {image: 'http://www.tendancevetements.com/upfiles/main/Entreprise-Loisir-Section-Verticale-Sac-%C3%80-Dos-Sacs-Bandouli%C3%A8re-Des-Sacs-Homme-Documents-Mallette-Marron-Chocolat-3032.jpg', prixHT: '64', nom: 'Sac',quantite:0},
   {image: 'http://blzjeans.com/13336-44958-thickbox/chaussures-de-ville-homme-noire-fashion-blz-jeans.jpg', prixHT: '39', nom: 'Chaussure',quantite:0},
 ];
-
-
   commande:any[]=[];
   total:number=0;
   panier:any[]=[];
   totaux:number=0
 
   ajoutProduit(index:number){
-    this.commande.push(this.produits[index]);
-    console.log(this.commande);
+    if(this.produits[index].quantite == 0) return;
+    let produit: any = Object.assign({},this.produits[index]);
+    let i: number = 0;
+    let produitExiste: boolean = false;
+    do {
+      if(this.commande[i]) {
+        if(this.commande[i].nom == produit.nom){
+          produitExiste = true;
+          break;
+        } else {
+          produitExiste = false;
+        }
+      }
+      i++;
+    } while(i < this.commande.length);
 
+    if(produitExiste){
+      this.commande[i].quantite += produit.quantite;
+    } else {
+      this.commande.push(produit);
+    }
+
+    this.produits[index].quantite = 0;
+console.log(this.commande);
   }
 
-  initial(index:number){
+  Total(index:number){
 
-    this.produits[index].quantite=0;
+    return this.commande[index].quantite*this.commande[index].prixHT;
+
   }
 
   ajout(index:number){
@@ -46,7 +66,6 @@ export class AppComponent {
 
   deduit(index:number){
     this.produits[index].quantite--;
-    console.log(this.produits[index].quantite);
       if(this.produits[index].quantite<0){
       this.produits[index].quantite=0;
       }
@@ -59,18 +78,16 @@ export class AppComponent {
   {this.commande.splice(index);}
 
   calculerTotal(index:number){
-let somme =0;
-for(var i=0; i<this.commande.length;i++){
-  somme+=parseInt(this.commande[i].prixHT);
-  console.log(this.commande);
-}
-return somme;
+    let somme =0;
+    for(var i=0; i<this.commande.length;i++){
+      somme+=parseInt(this.commande[i].prixHT) * parseInt(this.commande[i].quantite);
+    }
+    return somme;
   }
   calculerQte(index:number){
 let somme =0;
 for(var i=0; i<this.commande.length;i++){
   somme+=(this.commande[i].quantite);
-  console.log(this.commande);
 }
 return somme;
   }

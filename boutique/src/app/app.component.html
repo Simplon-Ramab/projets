@@ -6,7 +6,7 @@
       <div class="col-sm-12 col-md-12 col-lg-3 produit" *ngFor="let produit of produits let i=index" >
         <img src="{{produit.image}}" alt="">
         <h4>{{produit.nom}}</h4>
-        <h5>Prix {{produit.prixHT}}€</h5>
+        <h5>Prix {{produit.prixHT }}€</h5>
           <div class="row">
             <h5>quantité {{produit.quantite}}</h5>
             <button className="btn btn-primary" (click)="deduit(i)">-</button>
@@ -34,7 +34,7 @@
             <td>{{i+1}}</td>
 						<td>{{commandes.nom}}</td>
             <td>{{commandes.quantite}}</td>
-						<td>{{commandes.prixHT*commandes.quantite}}€</td>
+						<td>{{Total(i) | number : '1.2-2'}}€</td>
             <td (click)="supprimePanier(i)"><span class="glyphicon glyphicon-remove x"></span></td>
 					</tr>
             <tr>
@@ -60,8 +60,8 @@
         <tbody>
           <tr >
             <td class="prix">{{calculerQte(i)}}</td>
-            <td class="prix">{{calculerTotal(i)}}€</td>
-            <td class="prix">{{calculerTotal(i)+calculerTotal(i)*0.2}}</td>
+            <td class="prix">{{calculerTotal(i)| number : '1.2-2'}}€</td>
+            <td class="prix">{{calculerTotal(i)+calculerTotal(i)*0.2 | number : '1.2-2'}}</td>
             <td></td>
             <td (click)="supprimeCommande(i)"><span class="glyphicon glyphicon-trash rouge"></span></td>
           </tr>
